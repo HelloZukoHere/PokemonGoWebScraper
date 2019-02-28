@@ -21,7 +21,8 @@ with open('NationalDex.csv', mode='r') as infile:
     reader = csv.reader(infile)
     NatDex = {rows[0]: rows[1] for rows in reader}
 
-
+#get user input from the console
+#user types name of pokemon they want the moveset for
 pokeInput = input("Enter the Pokemon name to lookup \n")
 type(pokeInput)
 print(pokeInput)
@@ -57,20 +58,19 @@ for x in QuickMoves:
     listAttack.append(Quick)
 
 for y in ChargeMoves:
-    Charge = y.article.h2.a.span.span.text
+    Charge = str(y.article.h2.a.span.span.text)
     listCharge.append(Charge)
 
 for z in MoveGrade:
-    Grade = z.div.text
+    Grade = str(z.div.text)
     listGrade.append(Grade)
 
 movesExplain = pageSOUP.findAll("li", {"dir": "ltr"})
 for line in movesExplain:
     print(line.p.text)
 
-print(listAttack)
-print(listCharge)
-print(listGrade)
+print(listAttack[0] + " + " + listCharge[0] + " = " + listGrade[0])
+print(listAttack[1] + " + " + listCharge[1] + " = " + listGrade[1])
+print(listAttack[2] + " + " + listCharge[2] + " = " + listGrade[2])
+print(listAttack[3] + " + " + listCharge[3] + " = " + listGrade[3])
 
-for num, val in enumerate(listAttack):
-    print(num, val)
